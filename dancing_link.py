@@ -206,7 +206,7 @@ def s_transform(sudoku_dimension, row, col, value):
         for j in range(sudoku_dimension):
             tmp[j] = i * sudoku_dimension + j
         s_map[i] = tmp
-    result[s_map[row/sudoku_dimension][col/sudoku_dimension] * sudoku_dimension**2 + value] = 1
+    result[s_map[row//sudoku_dimension][col//sudoku_dimension] * sudoku_dimension**2 + value] = 1
     return result
 
 def v_transform(sudoku_dimension, row, col):
@@ -235,8 +235,8 @@ def construct_sudoku_matrix(sudoku_dimension):
 def inverse_transform(sudoku_dimension, r_constraint, c_constraint):
     # Sudoku dimension -- e.g. if 9x9, then dimension is 3
     # Given r_constraint and c_constraint, work out the row & col & value these constraints represent in our sudoku
-    row = r_constraint/(sudoku_dimension**2)
-    col = c_constraint/(sudoku_dimension**2)
+    row = r_constraint//(sudoku_dimension**2)
+    col = c_constraint//(sudoku_dimension**2)
     value = r_constraint % (sudoku_dimension**2)
     return row, col, value
 
@@ -260,7 +260,7 @@ def output_sudoku_solution(initial_constraint_matrix, solution_set):
         result[row][col] = str(value + 1) # Convert back to 1-indexed value
 
     for row in result:
-        print "".join(row)
+        print("".join(row))
 
 
 
@@ -303,6 +303,6 @@ if __name__=='__main__':
     dancing_link()
 
     # If we haven't exited code by now, there is no solution
-    print "no solution you dummy"
+    print("no solution you dummy")
 
 
